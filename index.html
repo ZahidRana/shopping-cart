@@ -114,7 +114,7 @@
 
       // Tax
 
-      function increseTax(id, price) {
+      function increaseTax(id, price) {
          let taxAmount = document.getElementById(id).innerText;
          const taxAmountNumber = parseFloat(taxAmount);
          const tax = Math.ceil(price / 10);
@@ -125,7 +125,7 @@
 
       // Total Price
 
-      function increseTotalPrice(id, price) {
+      function increaseTotalPrice(id, price) {
          let totalPrice = document.getElementById(id).innerText;
          const totalPriceNumber = parseFloat(totalPrice);
          const tax = Math.ceil(price / 10);
@@ -141,8 +141,8 @@
          addProductAmount("iphoneAmount");
          increaseProductPrice("iphoneSinglePrice", 1219);
          increaseSubtotalPrice("subtotalPrice", 1219);
-         increseTax("taxAmount", 1219);
-         increseTotalPrice("totalPrice", 1219);
+         increaseTax("taxAmount", 1219);
+         increaseTotalPrice("totalPrice", 1219);
       });
 
 
@@ -153,8 +153,8 @@
          addProductAmount("caseAmount");
          increaseProductPrice("caseSinglePrice", 59);
          increaseSubtotalPrice("subtotalPrice", 59);
-         increseTax("taxAmount", 59);
-         increseTotalPrice("totalPrice", 59);
+         increaseTax("taxAmount", 59);
+         increaseTotalPrice("totalPrice", 59);
       });
 
 
@@ -190,7 +190,7 @@
 
       // Subtotal Price
 
-      function decreaseTotalPrice(id, price) {
+      function decreaseSubtotalPrice(id, price) {
          let subtotalPrice = document.getElementById(id).innerText;
          const subtotalPriceNumber = parseFloat(subtotalPrice);
          const decreaseSubtotalPrice = subtotalPriceNumber - price;
@@ -204,7 +204,7 @@
 
       // Tax
 
-      function decreseTax(id, price) {
+      function decreaseTax(id, price) {
          let taxAmount = document.getElementById(id).innerText;
          const taxAmountNumber = parseFloat(taxAmount);
          const tax = Math.ceil(price / 10);
@@ -219,7 +219,7 @@
 
       // Decrese Total Price
 
-      function decreseTotalPrice(id, price) {
+      function decreaseTotalPrice(id, price) {
          let totalPrice = document.getElementById(id).innerText;
          const totalPriceNumber = parseFloat(totalPrice);
          const tax = Math.ceil(price/10);
@@ -239,9 +239,9 @@
 
          deductProductNumber("iphoneAmount");
          decreaseProductPrice("iphoneSinglePrice", 1219);
-         decreaseTotalPrice("subtotalPrice", 1219);
-         decreseTax("taxAmount", 1219);
-         decreseTotalPrice("totalPrice", 1219);
+         decreaseSubtotalPrice("subtotalPrice", 1219);
+         decreaseTax("taxAmount", 1219);
+         decreaseTotalPrice("totalPrice", 1219);
       });
 
 
@@ -252,9 +252,9 @@
 
          deductProductNumber("caseAmount");
          decreaseProductPrice("caseSinglePrice", 59)
-         decreaseTotalPrice("subtotalPrice", 59);
-         decreseTax("taxAmount", 59);
-         decreseTotalPrice("totalPrice", 59);
+         decreaseSubtotalPrice("subtotalPrice", 59);
+         decreaseTax("taxAmount", 59);
+         decreaseTotalPrice("totalPrice", 59);
       });
 
    </script>
