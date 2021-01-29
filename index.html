@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+   <title>Shopping Cart</title>
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" rel="stylesheet" />
+   <link href="style.css" rel="stylesheet">
+</head>
+
+<body>
+
+   <section>
+      <div class="container">
+         <div class="cart">
+            <div class="col-md-12 col-lg-10 mx-auto">
+               <div class="cart-item">
+                  <div class="row">
+                     <div class="col-md-7 center-item">
+                        <img src="images/product-1.png" alt="">
+                        <h5>iPhone 11 128GB Black</h5>
+                     </div>
+
+                     <div class="col-md-5 center-item">
+                        <div class="input-group number-spinner">
+                           <button id="iphoneMinusBtn" class="btn btn-default"><i class="fas fa-minus"></i></button>
+                           <input id="iphoneAmount" type="text" class="form-control text-center" value="0">
+                           <button id="iphonePlusBtn" class="btn btn-default"><i class="fas fa-plus"></i></button>
+                        </div>
+                        <h5>$<span id="iphoneSinglePrice">0</span></h5>
+                        <img src="images/remove.png" alt="" class="remove-item">
+                     </div>
+                  </div>
+               </div>
+
+               <div class="cart-item">
+                  <div class="row">
+                     <div class="col-md-7 center-item mx-auto">
+                        <img src="images/product-2.png" alt="">
+                        <h5>iPhone 11 Silicone Case - Black</h5>
+                     </div>
+                     <div class="col-md-5 center-item">
+                        <div class="input-group number-spinner">
+                           <button id="caseMinusBtn" class="btn btn-default"><i class="fas fa-minus"></i></button>
+                           <input id="caseAmount" type="text" class="form-control text-center" value="0">
+                           <button id="casePlusBtn" class="btn btn-default"><i class="fas fa-plus"></i></button>
+
+                        </div>
+                        <h5>$<span id="caseSinglePrice">0</span></h5>
+                        <img src="images/remove.png" alt="" class="remove-item">
+                     </div>
+                  </div>
+               </div>
+
+               <div class="cart-item">
+                  <div class="row">
+
+                     <div class="col-md-8">
+                        <h5>Subtotal:</h5>
+                        <h5>Tax:</h5>
+                        <h5>Total:</h5>
+                     </div>
+
+                     <div class="col-md-4 status">
+                        <h5>$<span id="subtotalPrice">0</span></h5>
+                        <h5>$<span id="taxAmount">0</span></h5>
+                        <h5>$<span id="totalPrice">0</span></h5>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-md-12 pt-4 pb-4">
+                  <button type="button" class="btn btn-success check-out">Check Out</button>
+               </div>
+            </div>
+         </div>
+      </div>
+   </section>
+
+   <script>
+
+      // Iphone and Case Plus Button
+
+      // Product Amount
+
+      function addProductAmount(id) {
+         let productAmount = document.getElementById(id).value;
+         const productNumber = parseFloat(productAmount);
+         const addProductNumber = productNumber + 1;
+         productAmount = document.getElementById(id).value = addProductNumber;
+      }
+
+
+      // Product Price
+
+      function increaseProductPrice(id, price) {
+         let productPrice = document.getElementById(id).innerText;
+         const productPriceNumber = parseFloat(productPrice);
+         const increaseProductPrice = productPriceNumber + price;
+         productPrice = document.getElementById(id).innerText = increaseProductPrice;
+      }
+
+
+      // Subtotal Price
+
+      function increaseSubtotalPrice(id, price) {
+         let subtotalPrice = document.getElementById(id).innerText;
+         const subtotalPriceNumber = parseFloat(subtotalPrice);
+         const increaseSubtotalPrice = subtotalPriceNumber + price;
+         subtotalPrice = document.getElementById(id).innerText = increaseSubtotalPrice;
+      }
+
+
+      // Tax
+
+      function increseTax(id, price) {
+         let taxAmount = document.getElementById(id).innerText;
+         const taxAmountNumber = parseFloat(taxAmount);
+         const tax = Math.ceil(price / 10);
+         const increaseTaxAmount = taxAmountNumber + tax;
+         taxAmount = document.getElementById(id).innerText = increaseTaxAmount;
+      }
+
+
+      // Total Price
+
+      function increseTotalPrice(id, price) {
+         let totalPrice = document.getElementById(id).innerText;
+         const totalPriceNumber = parseFloat(totalPrice);
+         const tax = Math.ceil(price / 10);
+         const increaseTotalPrice = totalPriceNumber + price + tax;
+         totalPrice = document.getElementById(id).innerText = increaseTotalPrice;
+      }
+
+
+      // Iphone Plus Button
+
+      const iphonePlusBtn = document.getElementById("iphonePlusBtn");
+      iphonePlusBtn.addEventListener("click", function () {
+         addProductAmount("iphoneAmount");
+         increaseProductPrice("iphoneSinglePrice", 1219);
+         increaseSubtotalPrice("subtotalPrice", 1219);
+         increseTax("taxAmount", 1219);
+         increseTotalPrice("totalPrice", 1219);
+      });
+
+
+      // Case Plus Button
+
+      const casePlusBtn = document.getElementById("casePlusBtn");
+      casePlusBtn.addEventListener("click", function () {
+         addProductAmount("caseAmount");
+         increaseProductPrice("caseSinglePrice", 59);
+         increaseSubtotalPrice("subtotalPrice", 59);
+         increseTax("taxAmount", 59);
+         increseTotalPrice("totalPrice", 59);
+      });
+
+
+      // Iphone and Case Minus Button
+
+      // Product Amount
+
+      function deductProductNumber(id) {
+         let productAmount = document.getElementById(id).value;
+         const productNumber = parseFloat(productAmount);
+         const deductProductNumber = productNumber - 1;
+         if (productAmount == 0) {
+            deductProductNumbers = productNumber - 1 * 0;
+            return deductProductNumbers;
+         }
+         caseAmount = document.getElementById(id).value = deductProductNumber;
+      }
+
+
+      // Product Price
+
+      function decreaseProductPrice(id, price) {
+         let productPrice = document.getElementById(id).innerText;
+         const productPriceNumber = parseFloat(productPrice);
+         const decreaseProductPrice = productPriceNumber - price;
+         if (productPrice == 0) {
+            decreaseProductsPrice = productPriceNumber - 1 * 0;
+            return decreaseProductsPrice;
+         }
+         productPrice = document.getElementById(id).innerText = decreaseProductPrice;
+      }
+
+
+      // Subtotal Price
+
+      function decreaseTotalPrice(id, price) {
+         let subtotalPrice = document.getElementById(id).innerText;
+         const subtotalPriceNumber = parseFloat(subtotalPrice);
+         const decreaseSubtotalPrice = subtotalPriceNumber - price;
+         if (subtotalPrice == 0) {
+            decreaseSubtotalPrices = subtotalPriceNumber - 1 * 0;
+            return decreaseSubtotalPrices;
+         }
+         subtotalPrice = document.getElementById(id).innerText = decreaseSubtotalPrice;
+      }
+
+
+      // Tax
+
+      function decreseTax(id, price) {
+         let taxAmount = document.getElementById(id).innerText;
+         const taxAmountNumber = parseFloat(taxAmount);
+         const tax = Math.ceil(price / 10);
+         const decreaseTaxAmount = taxAmountNumber - tax;
+         if (taxAmount == 0) {
+            decreaseTaxAmounts = taxAmountNumber - 1 * 0;
+            return decreaseTaxAmounts;
+         }
+         taxAmount = document.getElementById(id).innerText = decreaseTaxAmount;
+      }
+
+
+      // Decrese Total Price
+
+      function decreseTotalPrice(id, price) {
+         let totalPrice = document.getElementById(id).innerText;
+         const totalPriceNumber = parseFloat(totalPrice);
+         const tax = Math.ceil(price/10);
+         const decreaseTotalPrice = totalPriceNumber - price - tax;
+         if (totalPrice == 0) {
+            decreaseTotalPrices = totalPriceNumber - 1 * 0;
+            return decreaseTotalPrices;
+         }
+         totalPrice = document.getElementById(id).innerText = decreaseTotalPrice;
+      }
+
+
+      // Iphone Minus Button
+
+      const iphoneMinusBtn = document.getElementById("iphoneMinusBtn");
+      iphoneMinusBtn.addEventListener("click", function () {
+
+         deductProductNumber("iphoneAmount");
+         decreaseProductPrice("iphoneSinglePrice", 1219);
+         decreaseTotalPrice("subtotalPrice", 1219);
+         decreseTax("taxAmount", 1219);
+         decreseTotalPrice("totalPrice", 1219);
+      });
+
+
+      // Case Minus Button
+
+      const caseMinusBtn = document.getElementById("caseMinusBtn");
+      caseMinusBtn.addEventListener("click", function () {
+
+         deductProductNumber("caseAmount");
+         decreaseProductPrice("caseSinglePrice", 59)
+         decreaseTotalPrice("subtotalPrice", 59);
+         decreseTax("taxAmount", 59);
+         decreseTotalPrice("totalPrice", 59);
+      });
+
+   </script>
+</body>
+
+</html>
